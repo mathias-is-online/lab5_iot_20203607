@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -36,6 +38,8 @@ public class TaskListActivity extends AppCompatActivity implements TaskAdapter.O
     private TaskAdapter taskAdapter;
     private List<Task> taskList;
     private Button buttonAddTask;
+    private Button buttonCalendarView;
+
     private static final int REQUEST_CODE_EDIT_TASK = 1;
     private static final String TASKS_FILE_NAME = "tasks.dat";
 
@@ -55,6 +59,7 @@ public class TaskListActivity extends AppCompatActivity implements TaskAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
+        buttonCalendarView = findViewById(R.id.buttonCalendarView);
 
 
 
@@ -86,6 +91,20 @@ public class TaskListActivity extends AppCompatActivity implements TaskAdapter.O
         taskAdapter.setTaskList(taskList);
         taskAdapter.setContext(this);
         recyclerViewTasks.setAdapter(taskAdapter);
+
+
+        buttonCalendarView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abre la actividad de vista de calendario
+                Intent intent = new Intent(TaskListActivity.this, CalendarActivity.class);
+                intent.putExtra("TASK_LIST", (Serializable) taskList);
+                startActivity(intent);
+            }
+        });
+
+
+
 
         buttonAddTask.setOnClickListener(v -> {
             Intent intent = new Intent(TaskListActivity.this, EditTaskActivity.class);

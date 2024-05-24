@@ -38,6 +38,8 @@
         <activity android:name=".TaskListActivity" />
 
         <activity android:name=".EditTaskActivity" />
+        <activity android:name=".CalendarActivity" />
+
     </application>
 
 </manifest>
