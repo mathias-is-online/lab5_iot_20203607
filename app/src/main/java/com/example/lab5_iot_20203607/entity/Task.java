@@ -12,6 +12,13 @@ public class Task implements Serializable {
     private String importance;
     private Date dueDate; // la fecha cuando vence
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
 
     public void setReminderHour(int reminderHour) {
         this.reminderHour = reminderHour;

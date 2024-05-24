@@ -53,6 +53,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Fecha de vencimiento" />
+                    <TextView
+                        android:id="@+id/textViewTaskReminder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Recordatorio" />
                     <Button
                         android:id="@+id/buttonCompleteTask"
                         android:layout_width="wrap_content"

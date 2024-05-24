@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab5_iot_20203607.entity.Task;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
     private List<Task> taskList;
@@ -44,8 +46,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TextView textViewTaskDescription = holder.itemView.findViewById(R.id.textViewTaskDescription);
         textViewTaskDescription.setText(task.getDescription());
 
-        TextView textViewTaskDueDate = holder.itemView.findViewById(R.id.textViewTaskDueDate);
-        textViewTaskDueDate.setText(String.format("Recordatorio a las %02d:%02d", task.getReminderHour(), task.getReminderMinute()));
+        TextView textViewTaskDueDate = holder.itemView.findViewById(R.id.textViewTaskReminder);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String dueDateStr = dateFormat.format(task.getDueDate());
+        holder.textViewTaskDueDate.setText("Fecha de vencimiento: " + dueDateStr);
+        holder.textViewTaskDueDate.setVisibility(View.VISIBLE);
+
+        TextView textViewTaskReminder = holder.itemView.findViewById(R.id.textViewTaskReminder);
+        textViewTaskReminder.setText(String.format("Recordatorio a las %02d:%02d", task.getReminderHour(), task.getReminderMinute()));
+
 
         holder.buttonDone.setOnClickListener(v -> {
             new AlertDialog.Builder(context)

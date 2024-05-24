@@ -20,6 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Descripción"/>
+        <Button
+            android:id="@+id/buttonChooseDueDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elegir Fecha de Vencimiento" />
+
         <Spinner
             android:id="@+id/spinnerImportance"
             android:layout_width="match_parent"
