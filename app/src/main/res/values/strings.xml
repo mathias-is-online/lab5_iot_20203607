@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lab5_iot_20203607</string>
+    <string name="choose_importance_level">Elija el nivel de importancia de esta tarea</string>
+
+</resources>
